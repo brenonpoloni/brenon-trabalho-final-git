@@ -1,0 +1,399 @@
+/* ==========================================================================
+   RESET & CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+  --marvel-red: #e62429;
+  --marvel-dark-red: #9f1217;
+  --gold-accent: #f0a800;
+  --bg-dark: #0f0f12;
+  --bg-card: #18181c;
+  --bg-card-hover: #222228;
+  --text-main: #f0f0f5;
+  --text-muted: #a0a0b0;
+  --border-color: #2a2a35;
+  --font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+/* ==========================================================================
+   CABEÇALHO & NAVEGAÇÃO
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: rgba(15, 15, 18, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--marvel-red);
+}
+
+header img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  padding: 0;
+}
+
+header nav a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+header nav a:hover {
+  color: var(--marvel-red);
+}
+
+/* ==========================================================================
+   SEÇÃO HERO (DESTAQUE)
+   ========================================================================== */
+#inicio {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at center, #2a080a 0%, var(--bg-dark) 70%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+#inicio h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(230, 36, 41, 0.5);
+}
+
+#inicio p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+#inicio a {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#inicio a[href="#fases"] {
+  background-color: var(--marvel-red);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(230, 36, 41, 0.4);
+}
+
+#inicio a[href="#fases"]:hover {
+  background-color: var(--marvel-dark-red);
+  transform: translateY(-2px);
+}
+
+#inicio a[href="#onde-assistir"] {
+  border: 2px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+#inicio a[href="#onde-assistir"]:hover {
+  border-color: var(--marvel-red);
+  color: var(--marvel-red);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   ESTRUTURA DAS SEÇÕES
+   ========================================================================== */
+main > section {
+  padding: 5rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main > section h2 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+
+main > section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--marvel-red);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   SAGAS & HERÓIS (CARDS GRID)
+   ========================================================================== */
+#sagas, #herois {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+#sagas h2, #herois h2 {
+  grid-column: 1 / -1;
+}
+
+article {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  border-color: var(--marvel-red);
+  background-color: var(--bg-card-hover);
+}
+
+article h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--gold-accent);
+}
+
+article p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+article ul {
+  list-style: none;
+  padding: 0;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   FASES DO MCU (LISTA MULTI-COLUNA)
+   ========================================================================== */
+#fases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+#fases h2 {
+  grid-column: 1 / -1;
+}
+
+#fases > div {
+  background-color: var(--bg-card);
+  padding: 1.8rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--marvel-red);
+}
+
+#fases h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+#fases ol {
+  color: var(--text-muted);
+}
+
+#fases li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+#fases li::marker {
+  color: var(--marvel-red);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   ARTEFATOS (LISTA DE DEFINIÇÃO)
+   ========================================================================== */
+#artefatos dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+#artefatos dt {
+  font-size: 1.2rem;
+  color: var(--gold-accent);
+  margin-top: 1rem;
+  grid-column: 1 / -1;
+}
+
+#artefatos dd {
+  background-color: var(--bg-card);
+  padding: 1.2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Ajuste do grid de artefatos para melhor visualização */
+@media (min-width: 768px) {
+  #artefatos dl {
+    grid-template-columns: 1fr 1fr;
+  }
+  #artefatos dt {
+    grid-column: span 2;
+  }
+  #artefatos dt:first-of-type {
+    margin-top: 0;
+  }
+}
+
+/* ==========================================================================
+   ONDE ASSISTIR
+   ========================================================================== */
+#onde-assistir {
+  text-align: center;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+#onde-assistir p {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+#onde-assistir a {
+  display: inline-block;
+  background-color: #0063e5; /* Azul temático Disney+ */
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#onde-assistir a:hover {
+  background-color: #004bb8;
+  box-shadow: 0 4px 20px rgba(0, 99, 229, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+footer {
+  background-color: #08080a;
+  padding: 3rem 5% 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+footer nav a {
+  color: var(--text-muted);
+}
+
+footer nav a:hover {
+  color: var(--marvel-red);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  header nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  header nav a {
+    font-size: 0.85rem;
+  }
+
+  main > section {
+    padding: 3rem 1.5rem;
+  }
+
+  #inicio h1 {
+    font-size: 2rem;
+  }
